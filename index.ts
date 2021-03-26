@@ -4,6 +4,8 @@ import saldoRutas from "./rutas/saldo";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from 'cors';
+import express from 'express';
+import path from 'path';
 
 const server = new Server();
 
@@ -15,6 +17,7 @@ server.app.use(bodyParser.json());
 server.app.use(cors({origin: true, credentials: true}));
 
 //Rutas
+server.app.use(express.static(path.join((__dirname + '/public'))));
 server.app.use('/usuario', usuarioRutas);
 server.app.use('/saldo', saldoRutas);
 
